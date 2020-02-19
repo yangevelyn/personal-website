@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 var wait = require('gulp-wait');
 var rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
+var browserSync = require('browser-sync').create();
 
 gulp.task('scripts', function() {
     return gulp.src('js/scripts.js')
@@ -34,3 +35,11 @@ gulp.task('watch', function() {
     gulp.watch('js/scripts.js', gulp.series('scripts'));
     gulp.watch('scss/styles.scss', gulp.series('styles'));
 });
+
+gulp.task('browserSync', function() {
+    browserSync.init({
+      server: {
+        baseDir: '.'
+      },
+    })
+  })
